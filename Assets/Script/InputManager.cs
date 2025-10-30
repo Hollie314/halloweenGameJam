@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
 
     private CharacterMovement motor;
     private PlayerLook look;
+    private PlayerInteract interact;
 
     public bool canMove = true;
 
@@ -22,10 +23,11 @@ public class InputManager : MonoBehaviour
 
         motor = GetComponent<CharacterMovement>();
         look = GetComponent<PlayerLook>();
+        interact = FindFirstObjectByType<PlayerInteract>();
 
-        moveAction.action.performed += ctx => motor.Crouch();
-        crouchAction.action.performed += ctx => motor.Sprint();
-        interactAction.action.performed += ctx => Interact();
+        crouchAction.action.performed += ctx => motor.Crouch();
+        // sprintAction.action.performed += ctx => motor.Sprint();
+        interactAction.action.performed += ctx => interact.Interact();
     }
 
     void FixedUpdate()
@@ -40,10 +42,5 @@ public class InputManager : MonoBehaviour
     private void LateUpdate()
     {
         look.ProcessLook(lookAction.action.ReadValue<Vector2>());
-    }
-
-    private void Interact()
-    {
-
     }
 }
