@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: fake outline
-  m_Shader: {fileID: -6465566751694194690, guid: 5727be17840b6804b9ef8bf578d3cb0f, type: 3}
+  m_Name: screen
+  m_Shader: {fileID: -6465566751694194690, guid: 6ab6f1e2c958e704b9d1f44c75855f62, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -38,15 +38,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fade_Distance: 2.61
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _fade_sharpness: 5.33
-    m_Colors:
-    - _Outline_Color: {r: 1.8773584, g: 2, b: 1.8926886, a: 0}
+    - _intensity: 4.7
+    - _offset: 238.01
+    - _scale: 458.9
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &4741935217047888485
+--- !u!114 &334716348012208502
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
