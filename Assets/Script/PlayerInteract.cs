@@ -8,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
     public GameObject StateDrivenCamera;
     private GameObject HitObject;
     private InputManager inputManager;
+    private Transform holeCamera;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,12 +33,20 @@ public class PlayerInteract : MonoBehaviour
             HitObject = hit.transform.gameObject;
             Debug.Log(HitObject.name);
             Debug.Log(HitObject == null);
+
+            // Highlight the hole
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);
             Debug.Log("Did not Hit");
-            //HitObject = null;
+
+            if (HitObject != null)
+            {
+                // stop highlighting the hole
+            }
+
+            HitObject = null;
         }
     }
 
@@ -52,7 +61,8 @@ public class PlayerInteract : MonoBehaviour
                 Debug.Log("interact with hole");
                 playerAnimator.SetBool("Through hole", true);
                 inputManager.canMove = false;
-                Transform holeCamera = HitObject.transform.GetChild(0);
+
+                holeCamera = HitObject.transform.GetChild(0);
                 holeCamera.SetParent(StateDrivenCamera.transform, true);
                 holeCamera.gameObject.SetActive(true);
                 StateDrivenCamera.GetComponent<CinemachineStateDrivenCamera>().Instructions[2].Camera = holeCamera.GetComponent<CinemachineCamera>();
@@ -66,6 +76,10 @@ public class PlayerInteract : MonoBehaviour
 
     public void QuitHole()
     {
-
+        playerAnimator.SetBool("Through hole", false);
+        inputManager.canMove = true;
+        holeCamera.SetParent(HitObject.transform, true);
+        holeCamera.SetAsFirstSibling();
+        holeCamera.gameObject.SetActive(false);
     }
 }
