@@ -7,6 +7,7 @@ public class PlayerInteract : MonoBehaviour
     public Animator playerAnimator;
     public GameObject StateDrivenCamera;
     private GameObject HitObject;
+    private GameObject Autel;
     private InputManager inputManager;
     private Transform holeCamera;
 
@@ -14,6 +15,8 @@ public class PlayerInteract : MonoBehaviour
     void Start()
     {
         inputManager = FindFirstObjectByType<InputManager>();
+        StateDrivenCamera = FindFirstObjectByType<CinemachineStateDrivenCamera>().gameObject;
+        Autel = GameObject.FindGameObjectsWithTag("Autel")[0];
     }
 
     // Update is called once per frame
@@ -56,20 +59,24 @@ public class PlayerInteract : MonoBehaviour
         if (HitObject != null)
         {
             Debug.Log("interacting with something");
-            if (HitObject.CompareTag("Hole"))
+            if (HitObject.CompareTag("Hole") && !playerAnimator.GetBool("Through hole"))
             {
                 Debug.Log("interact with hole");
                 playerAnimator.SetBool("Through hole", true);
                 inputManager.canMove = false;
 
+                StateDrivenCamera.transform.GetChild(0).gameObject.GetComponent<PlayerInteract>().enabled = false;
                 holeCamera = HitObject.transform.GetChild(0);
                 holeCamera.SetParent(StateDrivenCamera.transform, true);
                 holeCamera.gameObject.SetActive(true);
                 StateDrivenCamera.GetComponent<CinemachineStateDrivenCamera>().Instructions[2].Camera = holeCamera.GetComponent<CinemachineCamera>();
             }
-            else if (HitObject.CompareTag("CanTake"))
+            else if (HitObject.CompareTag("CanTake") && playerAnimator.GetBool("Through hole"))
             {
                 Debug.Log("object Taken");
+                GameObject newObject = Instantiate(HitObject, Autel.transform.GetChild(0));
+                Destroy(HitObject);
+                HitObject = null;
             }
         }
     }
@@ -83,6 +90,7 @@ public class PlayerInteract : MonoBehaviour
             holeCamera.SetParent(HitObject.transform, true);
             holeCamera.SetAsFirstSibling();
             holeCamera.gameObject.SetActive(false);
+            StateDrivenCamera.transform.GetChild(0).gameObject.GetComponent<PlayerInteract>().enabled = true;
         }
     }
 }
