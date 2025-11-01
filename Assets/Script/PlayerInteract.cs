@@ -76,10 +76,13 @@ public class PlayerInteract : MonoBehaviour
 
     public void QuitHole()
     {
-        playerAnimator.SetBool("Through hole", false);
-        inputManager.canMove = true;
-        holeCamera.SetParent(HitObject.transform, true);
-        holeCamera.SetAsFirstSibling();
-        holeCamera.gameObject.SetActive(false);
+        if(playerAnimator.GetBool("Through hole") == true)
+        {
+            playerAnimator.SetBool("Through hole", false);
+            inputManager.canMove = true;
+            holeCamera.SetParent(HitObject.transform, true);
+            holeCamera.SetAsFirstSibling();
+            holeCamera.gameObject.SetActive(false);
+        }
     }
 }
