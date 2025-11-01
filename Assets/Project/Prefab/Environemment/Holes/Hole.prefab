@@ -256,6 +256,7 @@ MonoBehaviour:
   layerMaskInteractible:
     serializedVersion: 2
     m_Bits: 8
+  interactAction: {fileID: -3150853821488116038, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   playerAnimator: {fileID: 0}
   StateDrivenCamera: {fileID: 0}
   light_Material: {fileID: 2100000, guid: 7731bd1911994204ea5279d70137b861, type: 2}

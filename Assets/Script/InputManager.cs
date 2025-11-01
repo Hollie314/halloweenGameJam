@@ -8,13 +8,13 @@ public class InputManager : MonoBehaviour
     public InputActionReference moveAction;
     public InputActionReference crouchAction;
     public InputActionReference lookAction;
-    public InputActionReference interactAction;
     public InputActionReference escapeAction;
 
 
     private CharacterMovement motor;
     private PlayerLook look;
-    private PlayerInteract interact;
+    public PlayerInteract interact;
+    public PlayerInteract interactUsed;
 
     public bool canMove = true;
 
@@ -28,7 +28,6 @@ public class InputManager : MonoBehaviour
 
         crouchAction.action.performed += ctx => motor.Crouch();
         // sprintAction.action.performed += ctx => motor.Sprint();
-        interactAction.action.performed += ctx => interact.Interact();
         escapeAction.action.performed += ctx => interact.QuitHole();
     }
 

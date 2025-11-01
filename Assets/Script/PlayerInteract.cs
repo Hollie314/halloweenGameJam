@@ -2,10 +2,12 @@ using System.Linq;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
     public LayerMask layerMaskInteractible;
+    public InputActionReference interactAction;
     public Animator playerAnimator;
     public GameObject StateDrivenCamera;
     public Material light_Material;
@@ -21,6 +23,11 @@ public class PlayerInteract : MonoBehaviour
         inputManager = FindFirstObjectByType<InputManager>();
         StateDrivenCamera = FindFirstObjectByType<CinemachineStateDrivenCamera>().gameObject;
         Autel = GameObject.FindGameObjectsWithTag("Autel")[0];
+    }
+
+    private void Awake()
+    {
+        interactAction.action.performed += ctx => Interact();
     }
 
     // Update is called once per frame
@@ -120,7 +127,7 @@ public class PlayerInteract : MonoBehaviour
             else if (HitObject.CompareTag("CanTake"))
             {
                 Debug.Log("object Taken");
-                GameObject newObject = Instantiate(HitObject, Autel.transform.GetChild(0));
+                GameObject newObject = Instantiate(HitObject, Autel.transform.GetChild(0).position, Quaternion.identity);
                 Destroy(HitObject);
                 HitObject = null;
             }
