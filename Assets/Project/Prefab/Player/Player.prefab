@@ -425,6 +425,7 @@ MonoBehaviour:
     m_Bits: 8
   playerAnimator: {fileID: 3269497638825220355}
   StateDrivenCamera: {fileID: 5513826360401965128}
+  light_Material: {fileID: 2100000, guid: 7731bd1911994204ea5279d70137b861, type: 2}
 --- !u!1 &5513826360401965128
 GameObject:
   m_ObjectHideFlags: 0
