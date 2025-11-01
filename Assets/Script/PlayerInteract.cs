@@ -117,7 +117,7 @@ public class PlayerInteract : MonoBehaviour
                 holeCamera.gameObject.SetActive(true);
                 StateDrivenCamera.GetComponent<CinemachineStateDrivenCamera>().Instructions[2].Camera = holeCamera.GetComponent<CinemachineCamera>();
             }
-            else if (HitObject.CompareTag("CanTake") && playerAnimator.GetBool("Through hole"))
+            else if (HitObject.CompareTag("CanTake"))
             {
                 Debug.Log("object Taken");
                 GameObject newObject = Instantiate(HitObject, Autel.transform.GetChild(0));
