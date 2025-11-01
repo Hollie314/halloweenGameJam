@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CanTake
   - Hole
+  - Autel
   layers:
   - Default
   - TransparentFX

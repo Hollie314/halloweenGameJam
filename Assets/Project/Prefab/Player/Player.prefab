@@ -176,6 +176,8 @@ MonoBehaviour:
   lookAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   interactAction: {fileID: -3150853821488116038, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   escapeAction: {fileID: 3575735629811818474, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  interact: {fileID: 0}
+  interactUsed: {fileID: 0}
   canMove: 1
 --- !u!114 &3851337514303326038
 MonoBehaviour:
@@ -423,8 +425,10 @@ MonoBehaviour:
   layerMaskInteractible:
     serializedVersion: 2
     m_Bits: 8
+  interactAction: {fileID: -3150853821488116038, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   playerAnimator: {fileID: 3269497638825220355}
   StateDrivenCamera: {fileID: 5513826360401965128}
+  light_Material: {fileID: 2100000, guid: 7731bd1911994204ea5279d70137b861, type: 2}
 --- !u!1 &5513826360401965128
 GameObject:
   m_ObjectHideFlags: 0
