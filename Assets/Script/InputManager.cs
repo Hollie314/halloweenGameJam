@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
@@ -24,11 +25,11 @@ public class InputManager : MonoBehaviour
 
         motor = GetComponent<CharacterMovement>();
         look = GetComponent<PlayerLook>();
-        interact = FindFirstObjectByType<PlayerInteract>();
+        //interact = FindFirstObjectByType<CinemachineStateDrivenCamera>().transform.GetChild(0).gameObject.GetComponent<PlayerInteract>();
 
         crouchAction.action.performed += ctx => motor.Crouch();
         // sprintAction.action.performed += ctx => motor.Sprint();
-        escapeAction.action.performed += ctx => interact.QuitHole();
+        //escapeAction.action.performed += ctx => QuitHole();
     }
 
     void FixedUpdate()
@@ -42,9 +43,11 @@ public class InputManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (canMove)
-        {
-            look.ProcessLook(lookAction.action.ReadValue<Vector2>());
-        }
+        look.ProcessLook(lookAction.action.ReadValue<Vector2>());
+    }
+
+    private void QuitHole()
+    {
+        interact.QuitHole();
     }
 }
