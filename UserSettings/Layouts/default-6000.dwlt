@@ -523,7 +523,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 334}
     m_SelectedIDs: f6f50000
     m_LastClickedID: 62966
+<<<<<<< Updated upstream
     m_ExpandedIDs: 000000007cf600007ef6000080f6000082f6000084f6000086f6000088f60000
+=======
+    m_ExpandedIDs: 00000000fef9000000fa000002fa0000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -552,7 +556,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< Updated upstream
     m_ExpandedIDs: 000000007cf600007ef6000080f6000082f6000084f6000086f6000088f60000
+=======
+    m_ExpandedIDs: 00000000fef9000000fa000002fa0000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1371,7 +1379,11 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
+<<<<<<< Updated upstream
     m_Target: {x: -29.021023, y: 1.5905691, z: 16.613659}
+=======
+    m_Target: {x: -18.590395, y: 6.803069, z: 14.008431}
+>>>>>>> Stashed changes
     speed: 2
     m_Value: {x: -28.500988, y: 1.0348, z: 17.289328}
   m_RenderMode: 0
@@ -1382,7 +1394,7 @@ MonoBehaviour:
   m_ValidateTrueMetals: 0
   m_DoValidateTrueMetals: 0
   m_SceneViewState:
-    m_AlwaysRefresh: 1
+    m_AlwaysRefresh: 0
     showFog: 1
     showSkybox: 1
     showFlares: 1
@@ -1419,11 +1431,19 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
+<<<<<<< Updated upstream
     m_Target: {x: -0.15603799, y: 0.2883464, z: -0.047453642, w: -0.94362986}
     speed: 2
     m_Value: {x: 0.14751859, y: 0.7017375, z: -0.6802435, w: 0.15242131}
   m_Size:
     m_Target: 0.63300645
+=======
+    m_Target: {x: 0.03720916, y: -0.93438643, z: 0.3392849, w: 0.10240035}
+    speed: 2
+    m_Value: {x: 0.14751859, y: 0.7017375, z: -0.6802435, w: 0.15242131}
+  m_Size:
+    m_Target: 7.534396
+>>>>>>> Stashed changes
     speed: 2
     m_Value: 0.8660254
   m_Ortho:
