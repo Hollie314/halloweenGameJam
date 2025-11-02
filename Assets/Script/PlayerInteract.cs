@@ -30,7 +30,7 @@ public class PlayerInteract : MonoBehaviour
     void Start()
     {
         inputManager = FindFirstObjectByType<InputManager>();
-        playerAnimator = FindFirstObjectByType<Animator>();
+        playerAnimator = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Animator>();
         updateUI = FindFirstObjectByType<UpdateUI>();
         StateDrivenCamera = FindFirstObjectByType<CinemachineStateDrivenCamera>().gameObject;
         Autel = GameObject.FindGameObjectsWithTag("Autel")[0];
@@ -154,7 +154,7 @@ public class PlayerInteract : MonoBehaviour
                 GameObject newObject = Instantiate(HitObject, Autel.transform.GetChild(0).position, Quaternion.identity);
                 Destroy(HitObject);
                 HitObject = null;
-                updateUI.stolenCount++;
+                updateUI.UpdateText();
             }
         }
     }

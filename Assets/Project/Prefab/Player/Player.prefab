@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 1339113771971881569}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,6 +194,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLook
   cam: {fileID: 7679478475486615986}
+  clampLeftRight: 0
+  clampLeft: -80
+  clampright: 80
+  clampdowm: -80
+  clampup: 80
   xSensitivity: 30
   ySensitivity: 30
 --- !u!81 &2377447149558845091
@@ -425,8 +430,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3849130734572895700}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00007946276, y: -0.9999195, z: 0.008216404, w: -0.009670406}
-  m_LocalPosition: {x: -0.105910204, y: 0.0900001, z: 5.4750195}
+  m_LocalRotation: {x: -0.00007942225, y: -0.99991953, z: 0.008215284, w: -0.009666829}
+  m_LocalPosition: {x: -0.10588521, y: 0.0900001, z: 5.475768}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -633,6 +638,11 @@ MonoBehaviour:
   playerAnimator: {fileID: 3269497638825220355}
   StateDrivenCamera: {fileID: 5513826360401965128}
   light_Material: {fileID: 2100000, guid: 7731bd1911994204ea5279d70137b861, type: 2}
+  clampLeftRight: 0
+  clampLeft: -80
+  clampright: 80
+  clampdowm: -80
+  clampup: 80
 --- !u!1 &5513826360401965128
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,8 +765,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6555492905878706493}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0120003335, y: 0.47800002, z: 0.15799962}
+  m_LocalRotation: {x: 0.01298031, y: 0.7658882, z: -0.64265656, w: 0.015469341}
+  m_LocalPosition: {x: -24.341532, y: 4.5587554, z: -35.566154}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
