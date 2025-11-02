@@ -29,7 +29,7 @@ public class InputManager : MonoBehaviour
 
         crouchAction.action.performed += ctx => motor.Crouch();
         // sprintAction.action.performed += ctx => motor.Sprint();
-        escapeAction.action.performed += ctx => QuitHole();
+        escapeAction.action.performed += ctx => interact.QuitHole();
     }
 
     void FixedUpdate()
@@ -44,10 +44,5 @@ public class InputManager : MonoBehaviour
     private void LateUpdate()
     {
         look.ProcessLook(lookAction.action.ReadValue<Vector2>());
-    }
-
-    private void QuitHole()
-    {
-        interact.QuitHole();
     }
 }

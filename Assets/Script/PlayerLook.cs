@@ -41,4 +41,9 @@ public class PlayerLook : MonoBehaviour
             transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
         }
     }
+
+    public void ResetCam()
+    {
+        cam.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+    }
 }

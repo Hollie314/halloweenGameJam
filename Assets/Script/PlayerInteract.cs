@@ -127,9 +127,10 @@ public class PlayerInteract : MonoBehaviour
                 playerAnimator.SetBool("Through hole", true);
                 inputManager.canMove = false;
 
+
                 StateDrivenCamera.transform.GetChild(0).gameObject.GetComponent<PlayerInteract>().enabled = false;
                 holeCamera = HitObject.transform.GetChild(0);
-                holeCamera.SetParent(StateDrivenCamera.transform, true);
+                //holeCamera.SetParent(StateDrivenCamera.transform, true);
                 holeCamera.gameObject.SetActive(true);
                 StateDrivenCamera.GetComponent<CinemachineStateDrivenCamera>().Instructions[2].Camera = holeCamera.GetComponent<CinemachineCamera>();
 
@@ -155,10 +156,9 @@ public class PlayerInteract : MonoBehaviour
         if(playerAnimator.GetBool("Through hole") == true)
         {
             playerAnimator.SetBool("Through hole", false);
-            inputManager.canMove = true;
-            holeCamera.SetParent(HitObject.transform, true);
-            holeCamera.SetAsFirstSibling();
+            StateDrivenCamera.GetComponent<CinemachineStateDrivenCamera>().Instructions[2].Camera = null;
             holeCamera.gameObject.SetActive(false);
+            inputManager.canMove = true;
             StateDrivenCamera.transform.GetChild(0).gameObject.GetComponent<PlayerInteract>().enabled = true;
 
             look.cam = StateDrivenCamera.transform.GetChild(0).gameObject.GetComponent<CinemachineCamera>();
