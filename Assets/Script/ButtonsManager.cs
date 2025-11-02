@@ -45,7 +45,7 @@ public class ButtonsManager : MonoBehaviour
     }
     public void CreditsShae()
     {
-        Application.OpenURL("https://mythdraw.itch.io/");
+        Application.OpenURL("https://www.artstation.com/mythdraw");
     }
     public void CreditsAmanda()
     {

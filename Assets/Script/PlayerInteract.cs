@@ -21,7 +21,7 @@ public class PlayerInteract : MonoBehaviour
     void Start()
     {
         inputManager = FindFirstObjectByType<InputManager>();
-        StateDrivenCamera = FindFirstObjectByType<CinemachineStateDrivenCamera>().gameObject;
+        //StateDrivenCamera = FindFirstObjectByType<CinemachineStateDrivenCamera>().gameObject;
         Autel = GameObject.FindGameObjectsWithTag("Autel")[0];
     }
 
