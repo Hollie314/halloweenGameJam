@@ -6,6 +6,11 @@ public class ButtonsManager : MonoBehaviour
 
     public GameObject MainPanel;
 
+    private void Awake()
+    {
+        Cursor.visible = true;
+    }
+
     public void Back(GameObject currentPannel)
     {
         currentPannel.SetActive(false);
@@ -20,7 +25,7 @@ public class ButtonsManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("ProtoLevel");
     }
 
     public void CreditsLola()

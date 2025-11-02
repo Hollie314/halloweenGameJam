@@ -3,6 +3,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerInteract : MonoBehaviour
     private InputManager inputManager;
     private Transform holeCamera;
     private PlayerLook look;
+    private UpdateUI updateUI;
 
     public bool clampLeftRight = false;
     public float clampLeft = -80f;
@@ -29,6 +31,7 @@ public class PlayerInteract : MonoBehaviour
     {
         inputManager = FindFirstObjectByType<InputManager>();
         playerAnimator = FindFirstObjectByType<Animator>();
+        updateUI = FindFirstObjectByType<UpdateUI>();
         StateDrivenCamera = FindFirstObjectByType<CinemachineStateDrivenCamera>().gameObject;
         Autel = GameObject.FindGameObjectsWithTag("Autel")[0];
     }
@@ -141,12 +144,17 @@ public class PlayerInteract : MonoBehaviour
                 look.clampdowm = holeCamera.GetComponent<PlayerInteract>().clampdowm;
                 look.clampup = holeCamera.GetComponent<PlayerInteract>().clampup;
             }
+            else if (HitObject.CompareTag("Bed") && !playerAnimator.GetBool("Through hole"))
+            {
+                SceneManager.LoadScene("Main menu");
+            }
             else if (HitObject.CompareTag("CanTake"))
             {
                 Debug.Log("object Taken");
                 GameObject newObject = Instantiate(HitObject, Autel.transform.GetChild(0).position, Quaternion.identity);
                 Destroy(HitObject);
                 HitObject = null;
+                updateUI.stolenCount++;
             }
         }
     }
