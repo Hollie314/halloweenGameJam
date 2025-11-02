@@ -25,11 +25,11 @@ public class InputManager : MonoBehaviour
 
         motor = GetComponent<CharacterMovement>();
         look = GetComponent<PlayerLook>();
-        //interact = FindFirstObjectByType<CinemachineStateDrivenCamera>().transform.GetChild(0).gameObject.GetComponent<PlayerInteract>();
+        interact = FindFirstObjectByType<CinemachineStateDrivenCamera>().transform.GetChild(0).gameObject.GetComponent<PlayerInteract>();
 
         crouchAction.action.performed += ctx => motor.Crouch();
         // sprintAction.action.performed += ctx => motor.Sprint();
-        //escapeAction.action.performed += ctx => QuitHole();
+        escapeAction.action.performed += ctx => QuitHole();
     }
 
     void FixedUpdate()

@@ -29,7 +29,7 @@ public class PlayerInteract : MonoBehaviour
     {
         inputManager = FindFirstObjectByType<InputManager>();
         playerAnimator = FindFirstObjectByType<Animator>();
-        //StateDrivenCamera = FindFirstObjectByType<CinemachineStateDrivenCamera>().gameObject;
+        StateDrivenCamera = FindFirstObjectByType<CinemachineStateDrivenCamera>().gameObject;
         Autel = GameObject.FindGameObjectsWithTag("Autel")[0];
     }
 
