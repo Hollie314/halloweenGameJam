@@ -16,11 +16,19 @@ public class PlayerInteract : MonoBehaviour
     private GameObject Autel;
     private InputManager inputManager;
     private Transform holeCamera;
+    private PlayerLook look;
+
+    public bool clampLeftRight = false;
+    public float clampLeft = -80f;
+    public float clampright = 80f;
+    public float clampdowm = -80f;
+    public float clampup = 80f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         inputManager = FindFirstObjectByType<InputManager>();
+        playerAnimator = FindFirstObjectByType<Animator>();
         StateDrivenCamera = FindFirstObjectByType<CinemachineStateDrivenCamera>().gameObject;
         Autel = GameObject.FindGameObjectsWithTag("Autel")[0];
     }
@@ -28,6 +36,7 @@ public class PlayerInteract : MonoBehaviour
     private void Awake()
     {
         interactAction.action.performed += ctx => Interact();
+        look = FindFirstObjectByType<PlayerLook>();
     }
 
     // Update is called once per frame
@@ -118,11 +127,19 @@ public class PlayerInteract : MonoBehaviour
                 playerAnimator.SetBool("Through hole", true);
                 inputManager.canMove = false;
 
+
                 StateDrivenCamera.transform.GetChild(0).gameObject.GetComponent<PlayerInteract>().enabled = false;
                 holeCamera = HitObject.transform.GetChild(0);
-                holeCamera.SetParent(StateDrivenCamera.transform, true);
+                //holeCamera.SetParent(StateDrivenCamera.transform, true);
                 holeCamera.gameObject.SetActive(true);
                 StateDrivenCamera.GetComponent<CinemachineStateDrivenCamera>().Instructions[2].Camera = holeCamera.GetComponent<CinemachineCamera>();
+
+                look.cam = holeCamera.GetComponent <CinemachineCamera>();
+                look.clampLeftRight = true;
+                look.clampLeft = holeCamera.GetComponent<PlayerInteract>().clampLeft;
+                look.clampright = holeCamera.GetComponent<PlayerInteract>().clampright;
+                look.clampdowm = holeCamera.GetComponent<PlayerInteract>().clampdowm;
+                look.clampup = holeCamera.GetComponent<PlayerInteract>().clampup;
             }
             else if (HitObject.CompareTag("CanTake"))
             {
@@ -139,11 +156,17 @@ public class PlayerInteract : MonoBehaviour
         if(playerAnimator.GetBool("Through hole") == true)
         {
             playerAnimator.SetBool("Through hole", false);
-            inputManager.canMove = true;
-            holeCamera.SetParent(HitObject.transform, true);
-            holeCamera.SetAsFirstSibling();
+            StateDrivenCamera.GetComponent<CinemachineStateDrivenCamera>().Instructions[2].Camera = null;
             holeCamera.gameObject.SetActive(false);
+            inputManager.canMove = true;
             StateDrivenCamera.transform.GetChild(0).gameObject.GetComponent<PlayerInteract>().enabled = true;
+
+            look.cam = StateDrivenCamera.transform.GetChild(0).gameObject.GetComponent<CinemachineCamera>();
+            look.clampLeftRight = false;
+            look.clampLeft = -80f;
+            look.clampright = 80f;
+            look.clampdowm = -80f;
+            look.clampup = 80f;
         }
     }
 }
