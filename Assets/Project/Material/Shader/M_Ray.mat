@@ -50,7 +50,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Tint_and_Emission: {r: 1.601321, g: 1.7735848, b: 1.1963332, a: 1}
+    - _Tint_and_Emission: {r: 8.661486, g: 9.203441, b: 7.336705, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &3824947881067651468
