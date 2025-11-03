@@ -28,6 +28,11 @@ public class ButtonsManager : MonoBehaviour
         SceneManager.LoadScene("ProtoLevel");
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void CreditsLola()
     {
         Application.OpenURL("https://www.artstation.com/aykoma");
