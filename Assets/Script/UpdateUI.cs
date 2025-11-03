@@ -13,8 +13,9 @@ public class UpdateUI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void UpdateText()
+    public void UpdateText()
     {
+        stolenCount++;
         textAltar.text = $"Altar \n({stolenCount}/7)";
         textCanvas.text = $"Stolen items : {stolenCount}/7";
     }

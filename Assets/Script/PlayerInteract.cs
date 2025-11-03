@@ -30,7 +30,7 @@ public class PlayerInteract : MonoBehaviour
     void Start()
     {
         inputManager = FindFirstObjectByType<InputManager>();
-        playerAnimator = FindFirstObjectByType<Animator>();
+        playerAnimator = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Animator>();
         updateUI = FindFirstObjectByType<UpdateUI>();
         StateDrivenCamera = FindFirstObjectByType<CinemachineStateDrivenCamera>().gameObject;
         Autel = GameObject.FindGameObjectsWithTag("Autel")[0];
@@ -154,7 +154,7 @@ public class PlayerInteract : MonoBehaviour
                 GameObject newObject = Instantiate(HitObject, Autel.transform.GetChild(0).position, Quaternion.identity);
                 Destroy(HitObject);
                 HitObject = null;
-                updateUI.stolenCount++;
+                updateUI.UpdateText();
             }
         }
     }
@@ -164,7 +164,7 @@ public class PlayerInteract : MonoBehaviour
         if(playerAnimator.GetBool("Through hole") == true)
         {
             playerAnimator.SetBool("Through hole", false);
-            StateDrivenCamera.GetComponent<CinemachineStateDrivenCamera>().Instructions[2].Camera = null;
+            StateDrivenCamera.GetComponent<CinemachineStateDrivenCamera>().Instructions[2].Camera = StateDrivenCamera.transform.GetChild(0).gameObject.GetComponent<CinemachineCamera>();
             holeCamera.gameObject.SetActive(false);
             inputManager.canMove = true;
             StateDrivenCamera.transform.GetChild(0).gameObject.GetComponent<PlayerInteract>().enabled = true;
